@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Météo Marine - Vents & Houle</title>
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+/>
+<style>
+  /* Fond pleine page avec image de fond couvrante */
+  body {
+    margin: 0; 
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: url('photo_marin/test2.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #333;
+  }
+
+  /* Bandeau bleu en haut, non fixe */
+  header {
+    background: rgba(0, 0, 153, 0.85);
+    color: white;
+    text-align: center;
+    padding: 2rem 1rem;
+    font-weight: bold;
+    font-size: 2em;
+   box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  }
+
+  /* Conteneur principal pour contenu avec fond blanc semi-transparent */
+  main {
+    max-width: 1000px;
+    margin: 1.5rem auto 3rem auto;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    padding: 1rem 1.5rem 2rem 1.5rem;
+  }
+
+  #map {
+    height: 600px;
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+
+  .back-btn {
+    display: block;
+    max-width: 200px;
+    margin: 1rem auto 2rem;
+    background-color: #0077b6;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  .back-btn:hover {
+    background-color: #005f87;
+  }
+</style>
+</head>
+<body>
+
+<header>Météo Marine - Vents & Houle</header>
+
+<main>
+ 
+
+  <div id="map"></div>
+
+  <a href="index.html" class="back-btn">Retour à l'accueil</a>
+</main>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+  const API_KEY = '55a403b6df4fe9d2738da75b709acba5';
+
+  const map = L.map('map').setView([46, 2], 5);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 10,
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+
+  const windLayer = L.tileLayer(`https://tile.openweathermap.org/map/wind_new/{z}/{x}/{y}.png?appid=${API_KEY}`, {
+    opacity: 0.5,
+    attribution: 'OpenWeatherMap Wind'
+  }).addTo(map);
+
+  const waveLayer = L.tileLayer(`https://tile.openweathermap.org/map/waves_new/{z}/{x}/{y}.png?appid=${API_KEY}`, {
+    opacity: 0.5,
+    attribution: 'OpenWeatherMap Waves'
+  }).addTo(map);
+
+  const overlays = {
+    "Vents": windLayer,
+    "Houle": waveLayer
+  };
+  L.control.layers(null, overlays, {collapsed: false, position: 'topright'}).addTo(map);
+</script>
+
+</body>
+</html>
