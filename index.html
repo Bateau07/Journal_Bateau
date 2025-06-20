@@ -13,19 +13,17 @@
     body {
       margin: 0;
       font-family: 'Outfit', sans-serif;
-      background: linear-gradient(to bottom, #e0f7fa, #ffffff);
+      background: url('photo_marin/fond_index.jpg') no-repeat center center fixed;
+      background-size: cover;
       color: #1a2b4c;
     }
 
     header {
-      background: #023e8a;
+      background: rgba(2, 62, 138, 0.85); /* bleu semi-transparent */
       color: white;
-      padding: 1rem 0;
+      padding: 1.5rem 0 1rem;
       text-align: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
     }
 
     header h1 {
@@ -56,7 +54,10 @@
     .container {
       max-width: 1200px;
       margin: 2rem auto;
-      padding: 0 1rem;
+      padding: 2rem;
+      background-color: rgba(255, 255, 255, 0.9); /* fond semi-transparent */
+      border-radius: 16px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
     }
 
     .section {
@@ -90,17 +91,23 @@
     }
 
     footer {
-      background-color: #023e8a;
+      background-color: rgba(2, 62, 138, 0.9);
       color: white;
       text-align: center;
       padding: 1rem;
       margin-top: 3rem;
+      border-radius: 0 0 8px 8px;
     }
 
     @media screen and (max-width: 768px) {
       nav button {
         display: block;
         margin: 0.5rem auto;
+      }
+
+      .container {
+        margin: 1rem;
+        padding: 1rem;
       }
     }
   </style>
@@ -111,7 +118,7 @@
     <h1>Journal de la Voile</h1>
     <nav>
         <a href="futur.html"><button>🏁 Prochaine Course</button></a>
-        <a href="infos.html"><button>🌊 Infos Maritimes</button></a>
+        <a href="infos.html"><button>🌊 Meteo</button></a>
         <a href="marin.html"><button>🧭 Infos Marins</button></a>
         <a href="journal.html"><button>📰 Notre Journal</button></a>
     </nav>

@@ -1,36 +1,106 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Journal du Large</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
+    * {
       margin: 0;
       padding: 0;
-      background-color: #e0f7fa;
+      box-sizing: border-box;
     }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: url('photo_marin/fond-info.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      line-height: 1.6;
+    }
+
     header {
-      background-color: #006064;
+      background: rgba(0, 0, 153, 0.85);
       color: white;
-      padding: 20px;
+      padding: 40px 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    }
+
+    header h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+    }
+
+    .btn-accueil {
+      display: inline-block;
+      margin: 20px auto;
+      padding: 12px 24px;
+      background-color: #0066cc;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 1em;
+      transition: background 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
       text-align: center;
     }
+
+    .btn-accueil:hover {
+      background-color: #004d99;
+    }
+
     main {
-      padding: 30px;
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
     }
+
     section {
-      margin-bottom: 40px;
+      background-color: rgba(255, 255, 255, 0.85);
+      color: #222;
+      padding: 30px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
+
     h2 {
-      color: #004d40;
+      color: #003366;
+      margin-bottom: 15px;
     }
+
+    p {
+      font-size: 1.1em;
+    }
+
     footer {
-      background-color: #004d40;
-      color: white;
+      background: rgba(0, 0, 0, 0.7);
+      color: #ccc;
       text-align: center;
-      padding: 15px;
+      padding: 20px;
+      font-size: 0.9em;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2em;
+      }
+
+      .btn-accueil {
+        font-size: 0.9em;
+        padding: 10px 20px;
+      }
+
+      main {
+        padding: 20px;
+      }
+
+      section {
+        padding: 20px;
+      }
     }
   </style>
 </head>
@@ -39,6 +109,11 @@
     <h1>Journal du Large</h1>
     <p>Le média des passionnés de la mer</p>
   </header>
+
+  <!-- Bouton retour à l'accueil -->
+  <div style="text-align: center;">
+    <a href="index.html" class="btn-accueil">Retour à l'accueil</a>
+  </div>
 
   <main>
     <section>

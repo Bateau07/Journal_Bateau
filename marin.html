@@ -1,36 +1,82 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Les Plus Grands Marins</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Les Grands Marins</title>
   <style>
     body {
+      margin: 0;
       font-family: Arial, sans-serif;
-      background: #f2f2f2;
-      color: #333;
-      padding: 20px;
+      color: white;
+      background: url('photo_marin/fond_marin.jpg') no-repeat center center fixed;
+      background-size: cover;
     }
-    h1 {
+
+    /* Bandeau bleu en haut, non fixe */
+    .header-bar {
+      width: 100%;
+     background: rgba(0, 0, 153, 0.85);
+      color: white;
       text-align: center;
+      padding: 35px 0;
+      font-size: 2em;
+      font-weight: bold;
+     box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+      /* plus de position fixed ni z-index */
     }
-    .sailor {
-      background: white;
-      border-radius: 10px;
-      padding: 20px;
+
+   main {
+  max-width: 900px;
+  margin: 20px auto 40px auto;
+  background-color: rgba(255,255,255,0.5); /* moins opaque */
+  color: #333;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  padding: 20px;
+}
+
+.sailor {
+  background: rgba(255,255,255,1); /* blanc semi-transparent */
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  color: #333;
+}
+
+
+    .btn-accueil {
+      display: inline-block;
+      background-color: #0077cc;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
       margin: 20px 0;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      display: flex;
-      gap: 20px;
+      transition: background-color 0.3s ease;
     }
+
+    .btn-accueil:hover {
+      background-color: #005fa3;
+    }
+
+    
+
     .sailor img {
       width: 200px;
       height: auto;
       border-radius: 10px;
     }
+
     .info {
       flex: 1;
     }
+
     .info h2 {
       margin-top: 0;
     }
@@ -38,34 +84,83 @@
 </head>
 <body>
 
-  <h1>Les Plus Grands Marins de la Voile</h1>
+  <div class="header-bar">Les Plus Grands Marins de la Voile</div>
 
-  <div class="sailor">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Fran%C3%A7ois_Gabart_-_2012.jpg" alt="François Gabart">
+  <main>
+    <a href="index.html" class="btn-accueil">← Retour à l'accueil</a>
+
+   <div class="sailor">
+    <img src="photo_marin/francois_Gabart.jpg" alt="François Gabart">
     <div class="info">
       <h2>François Gabart</h2>
-      <p><strong>Projets :</strong> Trimaran MACIF, SVR-Lazartigue</p>
-      <p><strong>Courses gagnées :</strong> Vendée Globe 2012-2013, Transat Jacques Vabre, Route du Rhum</p>
+      <p><strong>Projets :</strong> Macif, SVR-Lazartigue</p>
+      <p><strong>Courses gagnées :</strong> Vendée Globe 2012-2013, Route du Rhum, Transat Jacques Vabre</p>
     </div>
   </div>
 
   <div class="sailor">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/Michel_Desjoyeaux_portrait.jpg" alt="Michel Desjoyeaux">
+    <img src="photo_marin/michel_Desjoyaux.jpg" alt="Michel Desjoyeaux">
     <div class="info">
       <h2>Michel Desjoyeaux</h2>
-      <p><strong>Projets :</strong> Foncia, PRB</p>
-      <p><strong>Courses gagnées :</strong> Vendée Globe 2000-2001 & 2008-2009, Solitaire du Figaro, Route du Rhum</p>
+      <p><strong>Projets :</strong> PRB, Foncia</p>
+      <p><strong>Courses gagnées :</strong> Vendée Globe 2000-2001 & 2008-2009, Route du Rhum, Solitaire du Figaro</p>
     </div>
   </div>
 
   <div class="sailor">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/1/14/Ellen_MacArthur_2009.jpg" alt="Ellen MacArthur">
+    <img src="photo_marin/ellen_Macarthur.png" alt="Ellen MacArthur">
     <div class="info">
       <h2>Ellen MacArthur</h2>
-      <p><strong>Projets :</strong> B&Q/Castorama</p>
-      <p><strong>Courses gagnées :</strong> 2e au Vendée Globe 2000-2001, record du tour du monde en solitaire 2005</p>
+      <p><strong>Projets :</strong> Kingfisher, B&Q/Castorama</p>
+      <p><strong>Courses gagnées :</strong> 2e au Vendée Globe 2000-2001, record du tour du monde en solitaire (2005)</p>
     </div>
   </div>
+
+  <div class="sailor">
+    <img src="photo_marin/jen_leCam.png" alt="Jean le Cam">
+    <div class="info">
+      <h2>Jean Le Cam</h2>
+      <p><strong>Projets :</strong> Yes We Cam!, Hubert</p>
+      <p><strong>Courses gagnées :</strong> Solitaire du Figaro (3 fois), Transat AG2R</p>
+    </div>
+  </div>
+
+  <div class="sailor">
+    <img src="photo_marin/guirec_Soudee.png" alt="Guirec Soudée">
+    <div class="info">
+      <h2>Guirec Soudée</h2>
+      <p><strong>Projets :</strong> Yvinec</p>
+      <p><strong>Faits marquants :</strong> Tour du monde avec une poule, passage du Nord-Ouest seul et sans assistance</p>
+    </div>
+  </div>
+
+  <div class="sailor">
+    <img src="photo_marin/armel_cleach.jpg" alt="Armel Le Cléac'h">
+    <div class="info">
+      <h2>Armel Le Cléac'h</h2>
+      <p><strong>Projets :</strong> Banque Populaire</p>
+      <p><strong>Courses gagnées :</strong> Vendée Globe 2016-2017, Transat Jacques Vabre, Solitaire du Figaro</p>
+    </div>
+  </div>
+
+  <div class="sailor">
+    <img src="photo_marin/viollette_Orange.jpg" alt="Violette d'Orange">
+    <div class="info">
+      <h2>Violette d'Orange</h2>
+      <p><strong>Projets :</strong> (fictionnel)</p>
+      <p><strong>Courses gagnées :</strong> Ce marin semble fictif ou non répertorié</p>
+    </div>
+  </div>
+
+  <div class="sailor">
+    <img src="photo_marin/eric_Tabarly.jpg" alt="Eric Tabarly">
+    <div class="info">
+      <h2>Éric Tabarly</h2>
+      <p><strong>Projets :</strong> Pen Duick</p>
+      <p><strong>Courses gagnées :</strong> Transat anglaise 1964 & 1976, grande figure de la voile française</p>
+    </div>
+  </div>
+  </main>
 
 </body>
 </html>
