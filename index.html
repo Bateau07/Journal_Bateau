@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mon Journal avec Netlify CMS</title>
+</head>
+<body>
+  <h1 id="title">Titre par défaut</h1>
+  <div id="content">Contenu par défaut de la page.</div>
+
+  <!-- Script pour charger le contenu JSON -->
+  <script>
+    fetch('content.json')
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('title').textContent = data.title;
+        document.getElementById('content').textContent = data.body;
+      })
+      .catch(() => {
+        console.log('Erreur de chargement du contenu.');
+      });
+  </script>
+</body>
+</html>
