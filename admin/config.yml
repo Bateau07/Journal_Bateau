@@ -1,10 +1,10 @@
 backend:
   name: github
-  repo: ton-utilisateur/ton-depot
+  repo: Bateau07/Journal_Bateau
   branch: main
 
   # Ajoute ceci :
-  site_domain: ton-site.netlify.app
+  site_domain: journalbateau.netlify.app
 
 media_folder: "static/img"
 public_folder: "/img"
