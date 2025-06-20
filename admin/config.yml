@@ -1,7 +1,10 @@
 backend:
   name: github
-  repo: TON_UTILISATEUR_GITHUB/TON_REPO # Modifie avec ton user et repo GitHub
+  repo: ton-utilisateur/ton-depot
   branch: main
+
+  # Ajoute ceci :
+  site_domain: ton-site.netlify.app
 
 media_folder: "static/img"
 public_folder: "/img"
@@ -11,8 +14,8 @@ collections:
     label: "Pages"
     files:
       - file: "content.json"
-        label: "Contenu de la page d'accueil"
-        name: "homepage"
+        label: "Contenu"
+        name: "home"
         fields:
-          - {label: "Titre", name: "title", widget: "string"}
-          - {label: "Contenu", name: "body", widget: "text"}
+          - { label: "Titre", name: "title", widget: "string" }
+          - { label: "Texte", name: "body", widget: "text" }
