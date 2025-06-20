@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frise Chronologique Voile</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4faff;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #0077b6;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      padding: 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .month {
+      margin-bottom: 2rem;
+    }
+    .month h2 {
+      background-color: #00b4d8;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+    }
+    .event {
+      background: white;
+      border-left: 5px solid #0077b6;
+      margin: 1rem 0;
+      padding: 1rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      border-radius: 4px;
+      transition: transform 0.2s;
+    }
+    .event:hover {
+      transform: translateX(5px);
+    }
+    .event-date {
+      font-weight: bold;
+      color: #0077b6;
+    }
+    .event-title {
+      font-size: 1.1rem;
+      margin: 0.5rem 0;
+    }
+    .event-desc {
+      font-size: 0.95rem;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Frise Chronologique - Événements de Voile (Juin - Août 2025)</h1>
+  </header>
+  <main class="timeline" id="timeline"></main>
+  
+  <script>
+    const events = [
+      { date: '3–9 juin', month: 'Juin', title: "Les Voiles d’Antibes", desc: "Régate de yachts classiques sur la French Riviera" },
+      { date: '21–29 juin', month: 'Juin', title: "Kiel Week (Allemagne)", desc: "Régates internationales majeures" },
+      { date: '4–7 juillet', month: 'Juillet', title: "Les Grandes Voiles du Havre", desc: "Rassemblement de grands voiliers et animations" },
+      { date: '5–12 juillet', month: 'Juillet', title: "Championnat du Monde Nacra 15", desc: "Compétition à La Rochelle" },
+      { date: '27 juil.–4 août', month: 'Juillet', title: "Rolex Fastnet Race (100e)", desc: "Course hauturière mythique organisée par RORC" },
+      { date: '10–11 août', month: 'Août', title: "24 heures de la voile", desc: "Course amateur à Trégastel, Côtes‑d’Armor" },
+      { date: '9–16 août', month: 'Août', title: "Championnat d’Europe ILCA 6/7", desc: "Épreuve à Marstrand (Suède)" },
+    ];
+
+    const timelineContainer = document.getElementById('timeline');
+    const months = [...new Set(events.map(e => e.month))];
+
+    months.forEach(month => {
+      const section = document.createElement('section');
+      section.classList.add('month');
+      const title = document.createElement('h2');
+      title.textContent = month;
+      section.appendChild(title);
+
+      events.filter(e => e.month === month).forEach(e => {
+        const card = document.createElement('div');
+        card.classList.add('event');
+        card.innerHTML = `
+          <div class="event-date">${e.date}</div>
+          <div class="event-title">${e.title}</div>
+          <div class="event-desc">${e.desc}</div>
+        `;
+        section.appendChild(card);
+      });
+
+      timelineContainer.appendChild(section);
+    });
+  </script>
+</body>
+</html>
