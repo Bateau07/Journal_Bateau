@@ -1,0 +1,50 @@
+[
+  {
+    "nom": "François Gabart",
+    "photo": "photo_marin/francois_Gabart.jpg",
+    "projets": "Macif, SVR-Lazartigue",
+    "courses": "Vendée Globe 2012-2013, Route du Rhum, Transat Jacques Vabre"
+  },
+  {
+    "nom": "Michel Desjoyeaux",
+    "photo": "photo_marin/michel_Desjoyaux.jpg",
+    "projets": "PRB, Foncia",
+    "courses": "Vendée Globe 2000-2001 & 2008-2009, Route du Rhum, Solitaire du Figaro"
+  },
+  {
+    "nom": "Ellen MacArthur",
+    "photo": "photo_marin/ellen_Macarthur.png",
+    "projets": "Kingfisher, B&Q/Castorama",
+    "courses": "2e au Vendée Globe 2000-2001, record du tour du monde en solitaire (2005)"
+  },
+  {
+    "nom": "Jean Le Cam",
+    "photo": "photo_marin/jen_leCam.png",
+    "projets": "Yes We Cam!, Hubert",
+    "courses": "Solitaire du Figaro (3 fois), Transat AG2R"
+  },
+  {
+    "nom": "Guirec Soudée",
+    "photo": "photo_marin/guirec_Soudee.png",
+    "projets": "Yvinec",
+    "faits": "Tour du monde avec une poule, passage du Nord-Ouest seul et sans assistance"
+  },
+  {
+    "nom": "Armel Le Cléac'h",
+    "photo": "photo_marin/armel_cleach.jpg",
+    "projets": "Banque Populaire",
+    "courses": "Vendée Globe 2016-2017, Transat Jacques Vabre, Solitaire du Figaro"
+  },
+  {
+    "nom": "Violette d'Orange",
+    "photo": "photo_marin/viollette_Orange.jpg",
+    "projets": "(fictionnel)",
+    "courses": "Ce marin semble fictif ou non répertorié"
+  },
+  {
+    "nom": "Éric Tabarly",
+    "photo": "photo_marin/eric_Tabarly.jpg",
+    "projets": "Pen Duick",
+    "courses": "Transat anglaise 1964 & 1976, grande figure de la voile française"
+  }
+]
