@@ -6,8 +6,8 @@
   <title>Journal de la Voile</title>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
   <style>
-   
     * { box-sizing: border-box; }
+
     body {
       margin: 0;
       font-family: 'Outfit', sans-serif;
@@ -15,6 +15,7 @@
       background-size: cover;
       color: #1a2b4c;
     }
+
     header {
       background: rgba(2, 62, 138, 0.85);
       color: white;
@@ -22,10 +23,10 @@
       text-align: center;
       box-shadow: 0 2px 8px rgba(0,0,0,0.2);
     }
+
     header h1 { margin: 0.5rem 0; font-size: 2.2rem; }
-    nav {
-      margin: 1rem 0;
-    }
+
+    nav { margin: 1rem 0; }
     nav button {
       background-color: #0077b6;
       color: white;
@@ -37,7 +38,9 @@
       font-size: 1rem;
       transition: background 0.3s ease;
     }
+
     nav button:hover { background-color: #00b4d8; }
+
     .container {
       max-width: 1200px;
       margin: 2rem auto;
@@ -46,29 +49,43 @@
       border-radius: 16px;
       box-shadow: 0 8px 16px rgba(0,0,0,0.15);
     }
+
     .section { margin-bottom: 2.5rem; }
+
     .section h2 {
       border-left: 5px solid #00b4d8;
       padding-left: 0.5rem;
       font-size: 1.6rem;
       margin-bottom: 1rem;
     }
+
     .card {
       background: white;
       border-radius: 12px;
       box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
       padding: 1.5rem;
       margin-bottom: 1.5rem;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
     }
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+
+    .card img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50%;
     }
+
+    .card-content {
+      flex: 1;
+    }
+
     .card h3 {
       margin-top: 0;
       color: #0077b6;
     }
+
     footer {
       background-color: rgba(2, 62, 138, 0.9);
       color: white;
@@ -77,6 +94,7 @@
       margin-top: 3rem;
       border-radius: 0 0 8px 8px;
     }
+
     @media screen and (max-width: 768px) {
       nav button {
         display: block;
@@ -85,6 +103,10 @@
       .container {
         margin: 1rem;
         padding: 1rem;
+      }
+      .card {
+        flex-direction: column;
+        text-align: center;
       }
     }
   </style>
@@ -123,6 +145,24 @@
     return array.sort(() => Math.random() - 0.5);
   }
 
+  // Convertit une date textuelle (ex: "3–9 juin") en objet Date approximatif
+  function parseFrenchDate(text) {
+    const mois = {
+      "janvier": 0, "février": 1, "mars": 2, "avril": 3, "mai": 4, "juin": 5,
+      "juillet": 6, "août": 7, "septembre": 8, "octobre": 9, "novembre": 10, "décembre": 11
+    };
+
+    const now = new Date();
+    const annee = now.getFullYear();
+    const match = text.match(/(\d+).*?(janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre)/i);
+    if (match) {
+      const jour = parseInt(match[1]);
+      const moisIndex = mois[match[2].toLowerCase()];
+      return new Date(annee, moisIndex, jour);
+    }
+    return new Date(9999, 0, 1); // fallback très loin
+  }
+
   // Charger les marins
   fetch('marins.json')
     .then(res => res.json())
@@ -132,7 +172,13 @@
       marinsRandom.forEach(m => {
         const div = document.createElement('div');
         div.className = 'card';
-        div.innerHTML = `<h3>${m.nom}</h3><p>${m.description}</p>`;
+        div.innerHTML = `
+          <img src="${m.photo}" alt="${m.nom}">
+          <div class="card-content">
+            <h3>${m.nom}</h3>
+            <p><strong>Projets :</strong> ${m.projets || "N/A"}</p>
+            <p><strong>Courses :</strong> ${m.courses || m.faits || "N/A"}</p>
+          </div>`;
         container.appendChild(div);
       });
     });
@@ -141,18 +187,24 @@
   fetch('courses.json')
     .then(res => res.json())
     .then(courses => {
-      const prochaines = courses
-        .sort((a, b) => new Date(a.date) - new Date(b.date))
+      const today = new Date();
+      const sortedCourses = courses
+        .map(c => ({ ...c, parsedDate: parseFrenchDate(c.date) }))
+        .filter(c => c.parsedDate >= today)
+        .sort((a, b) => a.parsedDate - b.parsedDate)
         .slice(0, 2);
+
       const container = document.getElementById('courses-container');
-      prochaines.forEach(c => {
+      sortedCourses.forEach(c => {
         const div = document.createElement('div');
         div.className = 'card';
         div.innerHTML = `
-          <h3>${c.nom}</h3>
-          <p><strong>Date :</strong> ${c.date}</p>
-          <p><strong>Lieu :</strong> ${c.lieu}</p>
-          <p>${c.description}</p>`;
+          <div class="card-content">
+            <h3>${c.title}</h3>
+            <p><strong>Date :</strong> ${c.date}</p>
+            <p><strong>Bateau :</strong> ${c.boat}</p>
+            <p>${c.desc}</p>
+          </div>`;
         container.appendChild(div);
       });
     });
