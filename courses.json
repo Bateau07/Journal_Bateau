@@ -1,0 +1,58 @@
+[
+  {
+    "date": "3–9 juin",
+    "month": "Juin",
+    "title": "Les Voiles d’Antibes",
+    "desc": "Régate de yachts classiques sur la French Riviera",
+    "offshore": false,
+    "boat": "Dériveur"
+  },
+  {
+    "date": "21–29 juin",
+    "month": "Juin",
+    "title": "Kiel Week (Allemagne)",
+    "desc": "Régates internationales majeures",
+    "offshore": false,
+    "boat": "Dériveur"
+  },
+  {
+    "date": "4–7 juillet",
+    "month": "Juillet",
+    "title": "Les Grandes Voiles du Havre",
+    "desc": "Rassemblement de grands voiliers",
+    "offshore": false,
+    "boat": "Ultime"
+  },
+  {
+    "date": "5–12 juillet",
+    "month": "Juillet",
+    "title": "Championnat du Monde Nacra 15",
+    "desc": "Compétition à La Rochelle",
+    "offshore": false,
+    "boat": "Imoca"
+  },
+  {
+    "date": "27 juil.–4 août",
+    "month": "Juillet",
+    "title": "Rolex Fastnet Race",
+    "desc": "Course hauturière mythique",
+    "offshore": true,
+    "boat": "Imoca"
+  },
+  {
+    "date": "10–11 août",
+    "month": "Août",
+    "title": "24 heures de la voile",
+    "desc": "Course amateur à Trégastel",
+    "offshore": false,
+    "boat": "Dériveur"
+  },
+  {
+    "date": "9–16 août",
+    "month": "Août",
+    "title": "Championnat d’Europe ILCA",
+    "desc": "Épreuve à Marstrand",
+    "offshore": false,
+    "boat": "Ultime"
+  }
+]
