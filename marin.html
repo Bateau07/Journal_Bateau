@@ -13,41 +13,52 @@
       background-size: cover;
     }
 
-    /* Bandeau bleu en haut, non fixe */
     .header-bar {
       width: 100%;
-     background: rgba(0, 0, 153, 0.85);
+      background: rgba(0, 0, 153, 0.85);
       color: white;
       text-align: center;
       padding: 35px 0;
       font-size: 2em;
       font-weight: bold;
-     box-shadow: 0 2px 8px rgba(0,0,0,0.4);
-      /* plus de position fixed ni z-index */
+      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
     }
 
-   main {
-  max-width: 900px;
-  margin: 20px auto 40px auto;
-  background-color: rgba(255,255,255,0.5); /* moins opaque */
-  color: #333;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-  padding: 20px;
-}
+    main {
+      max-width: 900px;
+      margin: 20px auto 40px auto;
+      background-color: rgba(255,255,255,0.5);
+      color: #333;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      padding: 20px;
+    }
 
-.sailor {
-  background: rgba(255,255,255,1); /* blanc semi-transparent */
-  border-radius: 10px;
-  padding: 20px;
-  margin: 20px 0;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  color: #333;
-}
+    .sailor {
+      background: rgba(255,255,255,1);
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px 0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      color: #333;
+    }
 
+    .sailor img {
+      width: 200px;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    .info {
+      flex: 1;
+    }
+
+    .info h2 {
+      margin-top: 0;
+    }
 
     .btn-accueil {
       display: inline-block;
@@ -64,22 +75,6 @@
     .btn-accueil:hover {
       background-color: #005fa3;
     }
-
-    
-
-    .sailor img {
-      width: 200px;
-      height: auto;
-      border-radius: 10px;
-    }
-
-    .info {
-      flex: 1;
-    }
-
-    .info h2 {
-      margin-top: 0;
-    }
   </style>
 </head>
 <body>
@@ -88,79 +83,31 @@
 
   <main>
     <a href="index.html" class="btn-accueil">Retour à l'accueil</a>
-
-   <div class="sailor">
-    <img src="photo_marin/francois_Gabart.jpg" alt="François Gabart">
-    <div class="info">
-      <h2>François Gabart</h2>
-      <p><strong>Projets :</strong> Macif, SVR-Lazartigue</p>
-      <p><strong>Courses gagnées :</strong> Vendée Globe 2012-2013, Route du Rhum, Transat Jacques Vabre</p>
-    </div>
-  </div>
-
-  <div class="sailor">
-    <img src="photo_marin/michel_Desjoyaux.jpg" alt="Michel Desjoyeaux">
-    <div class="info">
-      <h2>Michel Desjoyeaux</h2>
-      <p><strong>Projets :</strong> PRB, Foncia</p>
-      <p><strong>Courses gagnées :</strong> Vendée Globe 2000-2001 & 2008-2009, Route du Rhum, Solitaire du Figaro</p>
-    </div>
-  </div>
-
-  <div class="sailor">
-    <img src="photo_marin/ellen_Macarthur.png" alt="Ellen MacArthur">
-    <div class="info">
-      <h2>Ellen MacArthur</h2>
-      <p><strong>Projets :</strong> Kingfisher, B&Q/Castorama</p>
-      <p><strong>Courses gagnées :</strong> 2e au Vendée Globe 2000-2001, record du tour du monde en solitaire (2005)</p>
-    </div>
-  </div>
-
-  <div class="sailor">
-    <img src="photo_marin/jen_leCam.png" alt="Jean le Cam">
-    <div class="info">
-      <h2>Jean Le Cam</h2>
-      <p><strong>Projets :</strong> Yes We Cam!, Hubert</p>
-      <p><strong>Courses gagnées :</strong> Solitaire du Figaro (3 fois), Transat AG2R</p>
-    </div>
-  </div>
-
-  <div class="sailor">
-    <img src="photo_marin/guirec_Soudee.png" alt="Guirec Soudée">
-    <div class="info">
-      <h2>Guirec Soudée</h2>
-      <p><strong>Projets :</strong> Yvinec</p>
-      <p><strong>Faits marquants :</strong> Tour du monde avec une poule, passage du Nord-Ouest seul et sans assistance</p>
-    </div>
-  </div>
-
-  <div class="sailor">
-    <img src="photo_marin/armel_cleach.jpg" alt="Armel Le Cléac'h">
-    <div class="info">
-      <h2>Armel Le Cléac'h</h2>
-      <p><strong>Projets :</strong> Banque Populaire</p>
-      <p><strong>Courses gagnées :</strong> Vendée Globe 2016-2017, Transat Jacques Vabre, Solitaire du Figaro</p>
-    </div>
-  </div>
-
-  <div class="sailor">
-    <img src="photo_marin/viollette_Orange.jpg" alt="Violette d'Orange">
-    <div class="info">
-      <h2>Violette d'Orange</h2>
-      <p><strong>Projets :</strong> (fictionnel)</p>
-      <p><strong>Courses gagnées :</strong> Ce marin semble fictif ou non répertorié</p>
-    </div>
-  </div>
-
-  <div class="sailor">
-    <img src="photo_marin/eric_Tabarly.jpg" alt="Eric Tabarly">
-    <div class="info">
-      <h2>Éric Tabarly</h2>
-      <p><strong>Projets :</strong> Pen Duick</p>
-      <p><strong>Courses gagnées :</strong> Transat anglaise 1964 & 1976, grande figure de la voile française</p>
-    </div>
-  </div>
+    <div id="sailors-container"></div>
   </main>
 
+  <script>
+    fetch('marins.json')
+      .then(response => response.json())
+      .then(data => {
+        const container = document.getElementById('sailors-container');
+        data.forEach(marin => {
+          const div = document.createElement('div');
+          div.className = 'sailor';
+          div.innerHTML = `
+            <img src="${marin.photo}" alt="${marin.nom}">
+            <div class="info">
+              <h2>${marin.nom}</h2>
+              <p><strong>Projets :</strong> ${marin.projets}</p>
+              <p><strong>${marin.courses ? 'Courses gagnées' : 'Faits marquants'} :</strong> ${marin.courses || marin.faits}</p>
+            </div>
+          `;
+          container.appendChild(div);
+        });
+      })
+      .catch(error => {
+        console.error('Erreur lors du chargement des marins:', error);
+      });
+  </script>
 </body>
 </html>
