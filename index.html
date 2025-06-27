@@ -6,10 +6,8 @@
   <title>Journal de la Voile</title>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
+   
+    * { box-sizing: border-box; }
     body {
       margin: 0;
       font-family: 'Outfit', sans-serif;
@@ -17,24 +15,17 @@
       background-size: cover;
       color: #1a2b4c;
     }
-
     header {
-      background: rgba(2, 62, 138, 0.85); /* bleu semi-transparent */
+      background: rgba(2, 62, 138, 0.85);
       color: white;
       padding: 1.5rem 0 1rem;
       text-align: center;
       box-shadow: 0 2px 8px rgba(0,0,0,0.2);
     }
-
-    header h1 {
-      margin: 0.5rem 0;
-      font-size: 2.2rem;
-    }
-
+    header h1 { margin: 0.5rem 0; font-size: 2.2rem; }
     nav {
       margin: 1rem 0;
     }
-
     nav button {
       background-color: #0077b6;
       color: white;
@@ -46,31 +37,22 @@
       font-size: 1rem;
       transition: background 0.3s ease;
     }
-
-    nav button:hover {
-      background-color: #00b4d8;
-    }
-
+    nav button:hover { background-color: #00b4d8; }
     .container {
       max-width: 1200px;
       margin: 2rem auto;
       padding: 2rem;
-      background-color: rgba(255, 255, 255, 0.9); /* fond semi-transparent */
+      background-color: rgba(255, 255, 255, 0.9);
       border-radius: 16px;
       box-shadow: 0 8px 16px rgba(0,0,0,0.15);
     }
-
-    .section {
-      margin-bottom: 2.5rem;
-    }
-
+    .section { margin-bottom: 2.5rem; }
     .section h2 {
       border-left: 5px solid #00b4d8;
       padding-left: 0.5rem;
       font-size: 1.6rem;
       margin-bottom: 1rem;
     }
-
     .card {
       background: white;
       border-radius: 12px;
@@ -79,17 +61,14 @@
       margin-bottom: 1.5rem;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-
     .card:hover {
       transform: translateY(-5px);
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
     }
-
     .card h3 {
       margin-top: 0;
       color: #0077b6;
     }
-
     footer {
       background-color: rgba(2, 62, 138, 0.9);
       color: white;
@@ -98,13 +77,11 @@
       margin-top: 3rem;
       border-radius: 0 0 8px 8px;
     }
-
     @media screen and (max-width: 768px) {
       nav button {
         display: block;
         margin: 0.5rem auto;
       }
-
       .container {
         margin: 1rem;
         padding: 1rem;
@@ -114,50 +91,72 @@
 </head>
 <body>
 
-  <header>
-    <h1>Journal de la Voile</h1>
-    <nav>
+<header>
+  <h1>Journal de la Voile</h1>
+  <nav>
     <button onclick="location.href='futur.html'">🏁 Prochaine Course</button>
     <button onclick="location.href='infos.html'">🌊 Meteo</button>
     <button onclick="location.href='marin.html'">🧭 Infos Marins</button>
     <button onclick="location.href='journal.html'">📰 Notre Journal</button>
-</nav>
-    <p>🌤️ Dernières actualités du monde de la voile</p>
-  </header>
+  </nav>
+  <p>🌤️ Dernières actualités du monde de la voile</p>
+</header>
 
-  <div class="container">
-    <section class="section">
-      <h2>📅 Prochaines courses</h2>
-      <div class="card">
-        <h3>Vendée Globe</h3>
-        <p><strong>Date :</strong> 10 novembre 2025</p>
-        <p><strong>Lieu :</strong> Les Sables-d'Olonne</p>
-        <p>Course autour du monde en solitaire, sans escale et sans assistance.</p>
-      </div>
-      <div class="card">
-        <h3>Route du Rhum</h3>
-        <p><strong>Date :</strong> 2 novembre 2026</p>
-        <p><strong>Lieu :</strong> Saint-Malo → Pointe-à-Pitre</p>
-        <p>Course transatlantique en solitaire mythique.</p>
-      </div>
-    </section>
+<div class="container">
+  <section class="section">
+    <h2>📅 Prochaines courses</h2>
+    <div id="courses-container"></div>
+  </section>
 
-    <section class="section">
-      <h2>⛵ Grands marins</h2>
-      <div class="card">
-        <h3>François Gabart</h3>
-        <p>Vainqueur du Vendée Globe 2012-2013, recordman du tour du monde en solitaire.</p>
-      </div>
-      <div class="card">
-        <h3>Clarisse Crémer</h3>
-        <p>Record féminin du Vendée Globe en 2020-2021.</p>
-      </div>
-    </section>
-  </div>
+  <section class="section">
+    <h2>⛵ Grands marins</h2>
+    <div id="marins-container"></div>
+  </section>
+</div>
 
-  <footer>
-    © 2025 Journal de la Voile. Tous droits réservés.
-  </footer>
+<footer>
+  © 2025 Journal de la Voile. Tous droits réservés.
+</footer>
+
+<script>
+  function shuffle(array) {
+    return array.sort(() => Math.random() - 0.5);
+  }
+
+  // Charger les marins
+  fetch('marins.json')
+    .then(res => res.json())
+    .then(marins => {
+      const marinsRandom = shuffle(marins).slice(0, 2);
+      const container = document.getElementById('marins-container');
+      marinsRandom.forEach(m => {
+        const div = document.createElement('div');
+        div.className = 'card';
+        div.innerHTML = `<h3>${m.nom}</h3><p>${m.description}</p>`;
+        container.appendChild(div);
+      });
+    });
+
+  // Charger les courses
+  fetch('courses.json')
+    .then(res => res.json())
+    .then(courses => {
+      const prochaines = courses
+        .sort((a, b) => new Date(a.date) - new Date(b.date))
+        .slice(0, 2);
+      const container = document.getElementById('courses-container');
+      prochaines.forEach(c => {
+        const div = document.createElement('div');
+        div.className = 'card';
+        div.innerHTML = `
+          <h3>${c.nom}</h3>
+          <p><strong>Date :</strong> ${c.date}</p>
+          <p><strong>Lieu :</strong> ${c.lieu}</p>
+          <p>${c.description}</p>`;
+        container.appendChild(div);
+      });
+    });
+</script>
 
 </body>
 </html>
