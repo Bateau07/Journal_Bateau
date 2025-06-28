@@ -4,52 +4,63 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Les Grands Marins</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      color: white;
+      font-family: 'Outfit', sans-serif;
+      color: #222;
       background: url('photo_marin/fond_marin.jpg') no-repeat center center fixed;
       background-size: cover;
+      backdrop-filter: blur(2px);
     }
 
     .header-bar {
       width: 100%;
-      background: rgba(0, 0, 153, 0.85);
+      background: rgba(0, 0, 102, 0.85);
       color: white;
       text-align: center;
-      padding: 35px 0;
-      font-size: 2em;
+      padding: 2rem 1rem;
+      font-size: 2.2rem;
       font-weight: bold;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     }
 
     main {
-      max-width: 900px;
-      margin: 20px auto 40px auto;
-      background-color: rgba(255,255,255,0.5);
-      color: #333;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-      padding: 20px;
+      max-width: 1000px;
+      margin: 2rem auto;
+      background-color: rgba(255, 255, 255, 0.95);
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      padding: 2rem;
     }
 
     .sailor {
-      background: rgba(255,255,255,1);
-      border-radius: 10px;
-      padding: 20px;
-      margin: 20px 0;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
       display: flex;
-      gap: 20px;
       flex-wrap: wrap;
-      color: #333;
+      gap: 20px;
+      background-color: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+    }
+
+    .sailor:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
     }
 
     .sailor img {
-      width: 200px;
+      width: 180px;
       height: auto;
       border-radius: 10px;
+      object-fit: cover;
     }
 
     .info {
@@ -58,22 +69,46 @@
 
     .info h2 {
       margin-top: 0;
+      color: #003366;
+      font-size: 1.5rem;
     }
 
     .btn-accueil {
       display: inline-block;
       background-color: #0077cc;
       color: white;
-      padding: 10px 20px;
-      border-radius: 8px;
-      text-decoration: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 10px;
       font-weight: bold;
-      margin: 20px 0;
-      transition: background-color 0.3s ease;
+      text-decoration: none;
+      margin-bottom: 1.5rem;
+      transition: background-color 0.3s ease, transform 0.2s ease;
     }
 
     .btn-accueil:hover {
       background-color: #005fa3;
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 768px) {
+      .sailor {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .sailor img {
+        width: 100%;
+        max-width: 280px;
+      }
+
+      .info {
+        padding-top: 1rem;
+      }
+
+      .info h2 {
+        font-size: 1.3rem;
+      }
     }
   </style>
 </head>
@@ -82,7 +117,7 @@
   <div class="header-bar">Les Plus Grands Marins de la Voile</div>
 
   <main>
-    <a href="index.html" class="btn-accueil">Retour à l'accueil</a>
+    <a href="index.html" class="btn-accueil">← Retour à l'accueil</a>
     <div id="sailors-container"></div>
   </main>
 
@@ -109,5 +144,6 @@
         console.error('Erreur lors du chargement des marins:', error);
       });
   </script>
+
 </body>
 </html>
