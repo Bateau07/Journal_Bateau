@@ -6,68 +6,97 @@
   <title>Le Sillage</title>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     body {
-      margin: 0;
-       font-family: 'Segoe UI', sans-serif;
+      font-family: 'Segoe UI', sans-serif;
       background: url('photo_marin/fond_index.jpg') no-repeat center center fixed;
+      background-size: cover;
       color: #fff;
       line-height: 1.6;
     }
 
     header {
       background: rgba(2, 62, 138, 0.85);
-      color: white;
-      padding: 1.5rem 0 1rem;
       text-align: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      padding: 2rem 1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
     }
 
-    header h1 { margin: 0.5rem 0; font-size: 2.2rem; }
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
 
-    nav { margin: 1rem 0; }
+    header p {
+      font-size: 1.1rem;
+      color: #dbe9f4;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
     nav button {
       background-color: #0077b6;
       color: white;
       border: none;
-      margin: 0 0.5rem;
-      padding: 0.6rem 1.2rem;
-      border-radius: 25px;
-      cursor: pointer;
+      padding: 0.8rem 1.5rem;
+      border-radius: 30px;
       font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
       transition: background 0.3s ease;
     }
 
-    nav button:hover { background-color: #00b4d8; }
-
-    .container {
-      max-width: 1200px;
-      margin: 2rem auto;
-      padding: 2rem;
-      background-color: rgba(255, 255, 255, 0.9);
-      border-radius: 16px;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    nav button:hover {
+      background-color: #00b4d8;
     }
 
-    .section { margin-bottom: 2.5rem; }
+    .container {
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 16px;
+      color: #222;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+
+    .section {
+      margin-bottom: 2.5rem;
+    }
 
     .section h2 {
-      border-left: 5px solid #00b4d8;
-      padding-left: 0.5rem;
-      font-size: 1.6rem;
+      font-size: 1.8rem;
+      color: #003366;
       margin-bottom: 1rem;
+      border-left: 5px solid #00b4d8;
+      padding-left: 10px;
     }
 
     .card {
-      background: white;
+      background: #fff;
       border-radius: 12px;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
       display: flex;
       gap: 1rem;
+      padding: 1.2rem;
+      margin-bottom: 1.5rem;
       align-items: center;
+      transition: transform 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
     }
 
     .card img {
@@ -82,11 +111,11 @@
     }
 
     .card h3 {
-      margin-top: 0;
+      margin: 0 0 0.5rem;
       color: #0077b6;
     }
 
-      footer {
+    footer {
       background: rgba(0, 0, 0, 0.7);
       color: #ccc;
       text-align: center;
@@ -96,17 +125,23 @@
     }
 
     @media screen and (max-width: 768px) {
-      nav button {
-        display: block;
-        margin: 0.5rem auto;
+      nav {
+        flex-direction: column;
+        gap: 0.5rem;
       }
-      .container {
-        margin: 1rem;
-        padding: 1rem;
-      }
+
       .card {
         flex-direction: column;
         text-align: center;
+      }
+
+      .card img {
+        margin-bottom: 1rem;
+      }
+
+      .container {
+        margin: 1rem;
+        padding: 1.2rem;
       }
     }
   </style>
@@ -115,13 +150,13 @@
 
 <header>
   <h1>Le Sillage</h1>
+  <p>Journal sur les courses de la voile</p>
   <nav>
     <button onclick="location.href='futur.html'">🏁 Prochaine Course</button>
-    <button onclick="location.href='infos.html'">🌊 Meteo</button>
+    <button onclick="location.href='infos.html'">🌊 Météo</button>
     <button onclick="location.href='marin.html'">🧭 Infos Marins</button>
     <button onclick="location.href='journal.html'">📰 Notre Journal</button>
   </nav>
-  <p>Journal sur les courses de la voile</p>
 </header>
 
 <div class="container">
@@ -145,13 +180,11 @@
     return array.sort(() => Math.random() - 0.5);
   }
 
-  // Convertit une date textuelle (ex: "3–9 juin") en objet Date approximatif
   function parseFrenchDate(text) {
     const mois = {
       "janvier": 0, "février": 1, "mars": 2, "avril": 3, "mai": 4, "juin": 5,
       "juillet": 6, "août": 7, "septembre": 8, "octobre": 9, "novembre": 10, "décembre": 11
     };
-
     const now = new Date();
     const annee = now.getFullYear();
     const match = text.match(/(\d+).*?(janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre)/i);
@@ -160,10 +193,9 @@
       const moisIndex = mois[match[2].toLowerCase()];
       return new Date(annee, moisIndex, jour);
     }
-    return new Date(9999, 0, 1); // fallback très loin
+    return new Date(9999, 0, 1);
   }
 
-  // Charger les marins
   fetch('marins.json')
     .then(res => res.json())
     .then(marins => {
@@ -183,7 +215,6 @@
       });
     });
 
-  // Charger les courses
   fetch('courses.json')
     .then(res => res.json())
     .then(courses => {
