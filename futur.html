@@ -8,19 +8,19 @@
   <style>
     * {
       box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Outfit', sans-serif;
-      background: #f4faff;
-      color: #1a2b4c;
       margin: 0;
       padding: 0;
     }
 
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: url('photo_marin/fond_course.jpg') center/cover no-repeat fixed;
+      color: #1a2b4c;
+      min-height: 100vh;
+    }
+
     header {
-      background: url('photo_marin/fond_course.jpg') center/cover no-repeat;
-      padding: 5rem 1rem;
+      padding: 5rem 1rem 2rem;
       text-align: center;
       display: flex;
       align-items: center;
@@ -28,9 +28,10 @@
     }
 
     .header-content {
+      background-color: rgba(255,255,255,0.6);
       padding: 1.5rem 2rem;
       border-radius: 16px;
-      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
 
     .gradient-text {
@@ -51,11 +52,11 @@
       font-weight: 300;
       margin-top: 0.5rem;
       font-size: 1.1rem;
-      color: #fff;
+      color: #000;
     }
 
     #selection {
-      background: #e0f7fa;
+      background: rgba(255, 255, 255, 0.85);
       padding: 2rem 1.5rem;
       max-width: 1000px;
       margin: 2rem auto;
@@ -154,7 +155,7 @@
     }
 
     .event {
-      background: white;
+      background: rgba(255, 255, 255, 0.9);
       border-left: 6px solid #0077b6;
       margin: 1rem 0;
       padding: 1rem 1.2rem;
@@ -312,6 +313,5 @@
 
     document.addEventListener('DOMContentLoaded', loadData);
   </script>
-
 </body>
 </html>
