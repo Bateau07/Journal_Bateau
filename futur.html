@@ -20,8 +20,7 @@
     }
 
     header {
-      padding: 1rem 1rem 1rem;
-      text-align: center;
+      height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -31,19 +30,24 @@
       width: 100%;
       background: linear-gradient(to right, #000066, #4d4dff);
       color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
       text-align: center;
-      padding: 1rem 1rem;
-      font-size: 1.5rem;
-      font-weight: bold;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     }
 
-    .gradient-text {
+    .header-content h1 {
+      font-size: 4rem;
       background: linear-gradient(to right, #00b4d8, #0077b6);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      background-clip: text;
-      text-fill-color: transparent;
+    }
+
+    .header-content h4 {
+      font-size: 1.5rem;
+      margin-top: 1rem;
     }
 
     #selection {
@@ -208,7 +212,7 @@
 
   <header>
     <div class="header-content">
-      <h1 class="gradient-text">Course de Bateau</h1>
+      <h1>Course de Bateau</h1>
       <h4>Sélectionnez le type de course</h4>
     </div>
   </header>
@@ -244,82 +248,107 @@
 
   <main class="timeline" id="timeline"></main>
 
- <script>
-function parseFrenchDateRange(range) {
-  // Exemple : "3–9 juin"
-  const regex = /(\d{1,2})[–\-](\d{1,2}) (\w+)/i;
-  const match = range.match(regex);
-  if (!match) return null;
+  <script>
+    let events = [];
 
-  const dayStart = parseInt(match[1], 10);
-  const dayEnd = parseInt(match[2], 10);
-  const monthName = match[3].toLowerCase();
+    const timelineContainer = document.getElementById('timeline');
+    const toggle = document.getElementById('toggleOffshore');
+    const boatSelect = document.getElementById('boatType');
+    const datePicker = document.getElementById('datePicker');
 
-  const monthMap = {
-    "janvier": 0, "février": 1, "mars": 2, "avril": 3, "mai": 4, "juin": 5,
-    "juillet": 6, "août": 7, "septembre": 8, "octobre": 9, "novembre": 10, "décembre": 11
-  };
+    function parseFrenchDateRange(range) {
+      const year = new Date().getFullYear();
+      const monthMap = {
+        "janvier": 0, "février": 1, "mars": 2, "avril": 3, "mai": 4, "juin": 5,
+        "juillet": 6, "juil.": 6, "août": 7, "septembre": 8,
+        "octobre": 9, "novembre": 10, "décembre": 11
+      };
 
-  const month = monthMap[monthName];
-  if (month === undefined) return null;
+      const regex = /(\d{1,2})[–\-](\d{1,2}) (\w+)/i;
+      const altRegex = /(\d{1,2}) (\w+)[–\-](\d{1,2}) (\w+)/i;
 
-  const year = new Date().getFullYear();
-  return {
-    start: new Date(year, month, dayStart),
-    end: new Date(year, month, dayEnd)
-  };
-}
+      let match = range.match(regex);
+      if (match) {
+        const [, d1, d2, m] = match;
+        const month = monthMap[m.toLowerCase()];
+        return {
+          start: new Date(year, month, +d1),
+          end: new Date(year, month, +d2)
+        };
+      }
 
-function renderTimeline() {
-  const showOffshore = toggle.checked;
-  const selectedBoat = boatSelect.value;
-  const selectedDate = datePicker.value ? new Date(datePicker.value) : null;
+      match = range.match(altRegex);
+      if (match) {
+        const [, d1, m1, d2, m2] = match;
+        return {
+          start: new Date(year, monthMap[m1.toLowerCase()], +d1),
+          end: new Date(year, monthMap[m2.toLowerCase()], +d2)
+        };
+      }
 
-  timelineContainer.innerHTML = '';
-
-  const filtered = events.filter(e => {
-    const matchBoat = selectedBoat === "all" || e.boat === selectedBoat;
-    const matchOffshore = !showOffshore || e.offshore;
-
-    let matchDate = true;
-    if (selectedDate) {
-      const range = parseFrenchDateRange(e.date);
-      if (!range) return false;
-      matchDate = selectedDate >= range.start && selectedDate <= range.end;
+      return null;
     }
 
-    return matchBoat && matchOffshore && matchDate;
-  });
+    function renderTimeline() {
+      const showOffshore = toggle.checked;
+      const selectedBoat = boatSelect.value;
+      const selectedDate = datePicker.value ? new Date(datePicker.value) : null;
 
-  if (filtered.length === 0) {
-    timelineContainer.innerHTML = "<p>Aucune course trouvée pour cette date.</p>";
-    return;
-  }
+      timelineContainer.innerHTML = '';
 
-  const months = [...new Set(filtered.map(e => e.month))];
+      const filtered = events.filter(e => {
+        const matchBoat = selectedBoat === "all" || e.boat === selectedBoat;
+        const matchOffshore = !showOffshore || e.offshore;
+        const dateRange = parseFrenchDateRange(e.date);
+        const matchDate = !selectedDate || (dateRange && selectedDate >= dateRange.start && selectedDate <= dateRange.end);
+        return matchBoat && matchOffshore && matchDate;
+      });
 
-  months.forEach(month => {
-    const section = document.createElement('section');
-    section.classList.add('month');
-    const title = document.createElement('h2');
-    title.textContent = month;
-    section.appendChild(title);
+      if (filtered.length === 0) {
+        timelineContainer.innerHTML = "<p>Aucune course trouvée.</p>";
+        return;
+      }
 
-    filtered.filter(e => e.month === month).forEach(e => {
-      const card = document.createElement('div');
-      card.classList.add('event');
-      card.innerHTML = `
-        <div class="event-date">${e.date}</div>
-        <div class="event-title">${e.title}</div>
-        <div class="event-desc">${e.desc}</div>
-      `;
-      section.appendChild(card);
-    });
+      const months = [...new Set(filtered.map(e => e.month))];
 
-    timelineContainer.appendChild(section);
-  });
-}
-</script>
+      months.forEach(month => {
+        const section = document.createElement('section');
+        section.classList.add('month');
+        const title = document.createElement('h2');
+        title.textContent = month;
+        section.appendChild(title);
+
+        filtered.filter(e => e.month === month).forEach(e => {
+          const card = document.createElement('div');
+          card.classList.add('event');
+          card.innerHTML = `
+            <div class="event-date">${e.date}</div>
+            <div class="event-title">${e.title}</div>
+            <div class="event-desc">${e.desc}</div>
+          `;
+          section.appendChild(card);
+        });
+
+        timelineContainer.appendChild(section);
+      });
+    }
+
+    async function loadData() {
+      try {
+        const response = await fetch('courses.json');
+        events = await response.json();
+        renderTimeline();
+        toggle.addEventListener('change', renderTimeline);
+        boatSelect.addEventListener('change', renderTimeline);
+        datePicker.addEventListener('change', renderTimeline);
+      } catch (err) {
+        console.error("Erreur lors du chargement des données :", err);
+        timelineContainer.innerHTML = "<p>Impossible de charger les événements.</p>";
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', loadData);
+  </script>
 
 </body>
 </html>
