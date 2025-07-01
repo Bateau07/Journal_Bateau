@@ -1,7 +1,15 @@
 [
-  {
+   {
     "date": "3–9 juin",
     "month": "Juin",
+    "title": "Trophée Jules Verne",
+    "desc": "Tentatives de record autour du monde (équipage sur Ultime)",
+    "offshore": false,
+    "boat": "Dériveur"
+  },
+  {
+    "date": "1–28 février",
+    "month": "Novembre",
     "title": "Les Voiles d’Antibes",
     "desc": "Régate de yachts classiques sur la French Riviera",
     "offshore": false,
