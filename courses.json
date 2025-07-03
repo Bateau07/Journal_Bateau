@@ -1,4 +1,11 @@
-[
+[ {
+    "date": "10–28 Juillet",
+    "month": "Juillet",
+    "title": "TEST",
+    "desc": "Test valider",
+    "offshore": false,
+    "boat": "Dériveur"
+  },
    {
     "date": "1–28 Novembre",
     "month": "Novembre",
