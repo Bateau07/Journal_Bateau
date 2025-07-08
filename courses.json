@@ -1,11 +1,20 @@
 [ {
+    "date": "19–28 Juillet",
+    "month": "Juillet",
+    "title": "TEST3",
+    "desc": "Test 3valider",
+    "offshore": false,
+    "boat": "Imoca"
+  },
+    {
     "date": "19–28 Août",
     "month": "Août",
     "title": "TEST2",
     "desc": "Test 2valider",
     "offshore": false,
     "boat": "Imoca"
-  },{
+  },
+    {
     "date": "18–28 Août",
     "month": "Août",
     "title": "TEST",
