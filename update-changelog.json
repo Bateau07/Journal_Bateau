@@ -1,0 +1,9 @@
+{
+  "latestVersion": "1.0.1",
+  "latestVersionCode": 2,
+  "url": "https://github.com/USER/REPO/releases/download/v1.0.1/app-release.apk",
+  "releaseNotes": [
+    "- Correction de bugs",
+    "- Nouvelle fonctionnalité X"
+  ]
+}
