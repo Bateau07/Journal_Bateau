@@ -1,4 +1,5 @@
-[ {
+[
+  {
     "date": "26",
     "month": "Juillet",
     "title": "TEST3",
@@ -6,104 +7,16 @@
     "offshore": false,
     "boat": "Imoca"
   },
-    {
-    "date": "26–28 Août",
-    "month": "Août",
-    "title": "TEST2",
-    "desc": "Test 2valider",
-    "offshore": false,
-    "boat": "Imoca"
-  },
-    {
-    "date": "26–28 Juillet",
-    "month": "Juillet",
-    "title": "TEST",
-    "desc": "Test valider",
-    "offshore": false,
-    "boat": "Dériveur"
-  },
-   {
-    "date": "1–28 Novembre",
-    "month": "Novembre",
-    "title": "Trophée Jules Verne",
-    "desc": "Tentatives de record autour du monde (équipage sur Ultime)",
-    "offshore": false,
-    "boat": "Dériveur"
-  },
   {
-    "date": "3–9 juin",
-    "month": "Juin",
-    "title": "Les Voiles d’Antibes",
-    "desc": "Régate de yachts classiques sur la French Riviera",
-    "offshore": false,
-    "boat": "Dériveur"
-  },
-  {
-    "date": "21–29 juin",
-    "month": "Juin",
-    "title": "Kiel Week (Allemagne)",
-    "desc": "Régates internationales majeures",
-    "offshore": false,
-    "boat": "Dériveur"
-  },
-  {
-    "date": "4–7 juillet",
-    "month": "Juillet",
-    "title": "Les Grandes Voiles du Havre",
-    "desc": "Rassemblement de grands voiliers",
-    "offshore": false,
-    "boat": "Ultime"
-  },
-  {
-    "date": "5–12 juillet",
-    "month": "Juillet",
-    "title": "Championnat du Monde Nacra 15",
-    "desc": "Compétition à La Rochelle",
-    "offshore": false,
-    "boat": "Imoca"
-  },
-  {
-    "date": "27 juil.–4 août",
-    "month": "Juillet",
-    "title": "Rolex Fastnet Race",
-    "desc": "Course hauturière mythique",
-    "offshore": true,
-    "boat": "Imoca"
-  },
-  {
-    "date": "10–11 août",
-    "month": "Août",
-    "title": "24 heures de la voile",
-    "desc": "Course amateur à Trégastel",
-    "offshore": false,
-    "boat": "Dériveur"
-  },
-  {
-    "date": "9–16 août",
-    "month": "Août",
-    "title": "Championnat d’Europe ILCA",
-    "desc": "Épreuve à Marstrand",
-    "offshore": false,
-    "boat": "Ultime"
-  },
-  {
-    "date": "29–6 juillet",
-    "month": "Juin",
-    "title": "Course des Caps – Boulogne-sur-Mer",
-    "desc": "Course en équipage autour des îles anglo‑celtes",
-    "offshore": false,
-    "boat": "Imoca"
-  },
-   {
-   "date": "1 Août",
+    "date": "1",
     "month": "Août",
     "title": "The Ocean Race Europe",
     "desc": "Course en équipage autour des îles anglo‑celtes",
     "offshore": false,
     "boat": "Imoca"
   },
-   {
-    "date": "16 septembre",
+  {
+    "date": "16",
     "month": "Septembre",
     "title": "Défi Azimut – Lorient Agglomération",
     "desc": "Épreuve mixte (runs de vitesse + offshore, IMOCA)",
