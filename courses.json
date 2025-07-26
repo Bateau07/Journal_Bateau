@@ -1,12 +1,5 @@
 [
-  {
-    "date": "26",
-    "month": "Juillet",
-    "title": "TEST3",
-    "desc": "Test 3valider",
-    "offshore": false,
-    "boat": "Imoca"
-  },
+  
   {
     "date": "1",
     "month": "Août",
@@ -23,4 +16,3 @@
     "offshore": true,
     "boat": "Imoca"
   }
-]
